@@ -61,6 +61,7 @@ const createLocalProblem = async (editor: vscode.TextEditor) => {
 
     const newProblem: Problem = {
         name: 'Local: ' + path.basename(srcPath).split('.')[0],
+        title: 'Local: ' + path.basename(srcPath).split('.')[0],
         url: srcPath,
         tests: [
             {

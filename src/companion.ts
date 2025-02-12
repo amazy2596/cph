@@ -19,7 +19,7 @@ import { getJudgeViewProvider } from './extension';
 import { words_in_text } from './utilsPure';
 import telmetry from './telmetry';
 import os from 'os';
-
+// import * as fs from 'fs';
 const emptyResponse: CphEmptyResponse = { empty: true };
 let savedResponse: CphEmptyResponse | CphSubmitResponse = emptyResponse;
 const COMPANION_LOGGING = false;
@@ -109,6 +109,7 @@ export const setupCompanionServer = () => {
                         return;
                     }
                     const problem: Problem = JSON.parse(rawProblem);
+
                     handleNewProblem(problem);
                     COMPANION_LOGGING &&
                         globalThis.logger.log(
@@ -162,9 +163,9 @@ export const getProblemFileName = (problem: Problem, ext: string) => {
             useShortCodeForcesName(),
         );
 
-        const words = words_in_text(problem.name);
+        const words = words_in_text(problem.title);
         if (words === null) {
-            return `${problem.name.replace(/\W+/g, '_')}.${ext}`;
+            return `${problem.title.replace(/\W+/g, '_')}.${ext}`;
         } else {
             return `${words.join('_')}.${ext}`;
         }
