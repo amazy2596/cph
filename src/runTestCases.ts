@@ -65,7 +65,7 @@ const createLocalProblem = async (editor: vscode.TextEditor) => {
         url: srcPath,
         tests: [
             {
-                id: randomId(),
+                id: randomId(null),
                 input: '',
                 output: '',
             },

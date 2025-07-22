@@ -105,6 +105,12 @@ export const getDefaultLangPref = (): string | null => {
 export const useShortCodeForcesName = (): boolean => {
     return getPreference('general.useShortCodeForcesName');
 };
+export const useShortLuoguName = (): boolean => {
+    return getPreference('general.useShortLuoguName');
+};
+export const useShortAtCoderName = (): boolean => {
+    return getPreference('general.useShortAtCoderName');
+};
 export const getDefaultLanguageTemplateFileLocation = (): string | null => {
     const pref = getPreference('general.defaultLanguageTemplateFileLocation');
     if (pref === '') {
@@ -142,7 +148,9 @@ export const getLanguageId = (srcPath: string): number => {
     const extension = path.extname(srcPath);
     let compiler = null;
     switch (extension) {
-        case '.cpp': {
+        case '.cpp':
+        case '.cc':
+        case '.cxx': {
             compiler = getPreference('language.cpp.SubmissionCompiler');
             break;
         }
