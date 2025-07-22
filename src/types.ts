@@ -81,6 +81,7 @@ export type TestCase = {
 
 export type Problem = {
     name: string;
+    title: string;
     url: string;
     interactive: boolean;
     memoryLimit: number;
